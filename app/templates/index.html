@@ -1,0 +1,753 @@
+<!doctype HTML>
+<html>
+<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">  
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+<script src="https://unpkg.com/aframe-event-set-component@5/dist/aframe-event-set-component.min.js"></script>
+<script src="https://unpkg.com/aframe-layout-component@5.3.0/dist/aframe-layout-component.min.js"></script>
+<script src="https://unpkg.com/aframe-template-component@3.2.1/dist/aframe-template-component.min.js"></script>
+<script src="https://unpkg.com/aframe-proxy-event-component@2.1.0/dist/aframe-proxy-event-component.min.js"></script>
+<script src="https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar.js"></script>
+<script>
+    var correct1 = "";
+    var correct2 = "";
+    var correct3 = "";
+    var answer1 = "";
+    var answer2 = "";
+    var answer3 = "";
+    var po_x = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+    var jsondata;
+    var setno = Math.floor(Math.random() * 4) + 1;
+    setno = setno-1;
+    console.log(setno);
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', 'static/question.json');
+    xhr.responseType = 'json';
+
+    xhr.onload = function() {
+    if (xhr.status === 200) {
+        const data = xhr.response;
+        // Use the JSON data here
+        jsondata = data;
+        console.log(data);
+    } else {
+        // Handle any errors here
+        console.error('Error loading JSON file');
+    }
+    };
+    xhr.send();
+    
+    
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js'></script>
+<script>
+   
+
+    
+  
+  
+  let context;
+  window.onload = function(){
+    context = new AudioContext();
+  }  
+  AFRAME.registerComponent('markerhandler', {
+    init: function () {
+      this.el.addEventListener('markerFound', () => {
+        var markerId = this.el.id;
+        console.log(markerId)
+        marker1Pos = new THREE.Vector3();
+        console.log(this.el.object3D.getWorldPosition(marker1Pos).x);
+
+        if (markerId=="marker1")
+        {
+            po_x[0] = this.el.object3D.getWorldPosition(marker1Pos).x;
+        }
+        if (markerId=="marker2")
+        {
+          po_x[1] = this.el.object3D.getWorldPosition(marker1Pos).x;
+        }
+        if (markerId=="marker3")
+        {
+            po_x[2] = this.el.object3D.getWorldPosition(marker1Pos).x;
+        }
+
+        if (markerId=="marker4")
+        {
+          po_x[3] = this.el.object3D.getWorldPosition(marker1Pos).x;
+        }
+
+        if (markerId=="marker5")
+        {
+          po_x[4] = this.el.object3D.getWorldPosition(marker1Pos).x;
+        }
+
+        if (markerId=="marker6")
+        {
+          po_x[5] = this.el.object3D.getWorldPosition(marker1Pos).x;
+        }
+
+        if (markerId=="marker7")
+        {
+          po_x[6] = this.el.object3D.getWorldPosition(marker1Pos).x;
+        }
+
+        if (markerId=="marker8")
+        {
+          po_x[7] = this.el.object3D.getWorldPosition(marker1Pos).x;
+        }
+
+        if (markerId=="marker9")
+        {
+          po_x[8] = this.el.object3D.getWorldPosition(marker1Pos).x;
+        }
+
+        if (markerId=="marker10")
+        {
+          po_x[9] = this.el.object3D.getWorldPosition(marker1Pos).x;
+        }
+
+        if (markerId=="marker11")
+        {
+          po_x[10] = this.el.object3D.getWorldPosition(marker1Pos).x;
+        }
+
+        if (markerId=="marker12")
+        {
+          po_x[11] = this.el.object3D.getWorldPosition(marker1Pos).x;
+        }
+
+        if (markerId=="marker13")
+        {
+          po_x[12] = this.el.object3D.getWorldPosition(marker1Pos).x;
+        }
+
+        if (markerId=="marker14")
+        {
+          po_x[13] = this.el.object3D.getWorldPosition(marker1Pos).x;
+        }
+
+        if (markerId=="marker15")
+        {
+          po_x[14] = this.el.object3D.getWorldPosition(marker1Pos).x;
+        }
+
+        if (markerId=="marker16")
+        {
+          po_x[15] = this.el.object3D.getWorldPosition(marker1Pos).x;
+        }
+
+        if (markerId=="marker17")
+        {
+          po_x[16] = this.el.object3D.getWorldPosition(marker1Pos).x;
+        }
+
+        if (markerId=="marker18")
+        {
+          po_x[17] = this.el.object3D.getWorldPosition(marker1Pos).x;
+        }
+
+        if (markerId=="marker19")
+        {
+          po_x[18] = this.el.object3D.getWorldPosition(marker1Pos).x;
+        }
+
+        if (markerId=="marker20")
+        {
+          po_x[19] = this.el.object3D.getWorldPosition(marker1Pos).x;
+        }
+
+        if (markerId=="marker21")
+        {
+          po_x[20] = this.el.object3D.getWorldPosition(marker1Pos).x;
+        }
+
+        if (markerId=="marker22")
+        {
+          po_x[21] = this.el.object3D.getWorldPosition(marker1Pos).x;
+        }
+
+        if (markerId=="marker23")
+        {
+          po_x[22] = this.el.object3D.getWorldPosition(marker1Pos).x;
+        }
+
+        if (markerId=="marker24")
+        {
+          po_x[23] = this.el.object3D.getWorldPosition(marker1Pos).x;
+        }
+
+        if (markerId=="marker25")
+        {
+          po_x[24] = this.el.object3D.getWorldPosition(marker1Pos).x;
+        }
+
+        if (markerId=="marker26")
+        {
+          po_x[25] = this.el.object3D.getWorldPosition(marker1Pos).x;
+        }
+
+        console.log(po_x);
+        checkanswer(po_x[parseInt(correct1)],po_x[parseInt(correct2)],po_x[parseInt(correct3)]);   
+      })
+
+      this.el.addEventListener('markerLost', () => {
+        var markerId = this.el.id;
+        console.log(markerId)
+        marker1Pos = new THREE.Vector3();
+        console.log(this.el.object3D.getWorldPosition(marker1Pos).x);
+
+        if (markerId=="marker1")
+        {
+            po_x[0] = 0;
+        }
+        if (markerId=="marker2")
+        {
+          po_x[1] = 0;
+        }
+        if (markerId=="marker3")
+        {
+            po_x[2] = 0;
+        }
+
+        if (markerId=="marker4")
+        {
+          po_x[3] = 0;
+        }
+
+        if (markerId=="marker5")
+        {
+          po_x[4] =0;
+        }
+
+        if (markerId=="marker6")
+        {
+          po_x[5] = 0;
+        }
+
+        if (markerId=="marker7")
+        {
+          po_x[6] = 0;
+        }
+
+        if (markerId=="marker8")
+        {
+          po_x[7] = 0;
+        }
+
+        if (markerId=="marker9")
+        {
+          po_x[8] = 0;
+        }
+
+        if (markerId=="marker10")
+        {
+          po_x[9] = 0;
+        }
+
+        if (markerId=="marker11")
+        {
+          po_x[10] =0;
+        }
+
+        if (markerId=="marker12")
+        {
+          po_x[11] =0;
+        }
+
+        if (markerId=="marker13")
+        {
+          po_x[12] = 0;
+        }
+
+        if (markerId=="marker14")
+        {
+          po_x[13] = 0;
+        }
+
+        if (markerId=="marker15")
+        {
+          po_x[14] =0;
+        }
+
+        if (markerId=="marker16")
+        {
+          po_x[15] = 0;
+        }
+
+        if (markerId=="marker17")
+        {
+          po_x[16] = 0;
+        }
+
+        if (markerId=="marker18")
+        {
+          po_x[17] =0;
+        }
+
+        if (markerId=="marker19")
+        {
+          po_x[18] = 0;
+        }
+
+        if (markerId=="marker20")
+        {
+          po_x[19] = 0;
+        }
+
+        if (markerId=="marker21")
+        {
+          po_x[20] = 0;
+        }
+
+        if (markerId=="marker22")
+        {
+          po_x[21] = 0;
+        }
+
+        if (markerId=="marker23")
+        {
+          po_x[22] = 0;
+        }
+
+        if (markerId=="marker24")
+        {
+          po_x[23] = 0;
+        }
+
+        if (markerId=="marker25")
+        {
+          po_x[24] =0;
+        }
+
+        if (markerId=="marker26")
+        {
+          po_x[25] = 0;
+        }
+
+        console.log(po_x);
+        console.log(parseInt(correct1));
+        checkanswer(po_x[parseInt(correct1)],po_x[parseInt(correct2)],po_x[parseInt(correct3)]);
+
+      })
+    }
+  });
+</script>
+<script>
+    window.onload = function () {
+        console.log("jsondata2="+jsondata);
+        var q1_sound = jsondata.questions[setno].soundfile[0];
+        var q2_sound = jsondata.questions[setno].soundfile[1];
+        var q3_sound = jsondata.questions[setno].soundfile[2];
+        var q4_sound = jsondata.questions[setno].soundfile[3];
+        var q5_sound = jsondata.questions[setno].soundfile[4];
+        var q1_c1 = jsondata.questions[setno].answer1[0];
+        var q1_c2 = jsondata.questions[setno].answer1[1];
+        var q1_c3 = jsondata.questions[setno].answer1[2];
+        var q2_c1 = jsondata.questions[setno].answer2[0];
+        var q2_c2 = jsondata.questions[setno].answer2[1];
+        var q2_c3 = jsondata.questions[setno].answer2[2];
+        var q3_c1 = jsondata.questions[setno].answer3[0];
+        var q3_c2 = jsondata.questions[setno].answer3[1];
+        var q3_c3 = jsondata.questions[setno].answer3[2];
+        var q4_c1 = jsondata.questions[setno].answer4[0];
+        var q4_c2 = jsondata.questions[setno].answer4[1];
+        var q4_c3 = jsondata.questions[setno].answer4[2];
+        var q5_c1 = jsondata.questions[setno].answer5[0];
+        var q5_c2 = jsondata.questions[setno].answer5[1];
+        var q5_c3 = jsondata.questions[setno].answer5[2];
+        
+        document.getElementById("button1").addEventListener("click", function () {
+          
+            document.getElementById("sound_q1").setAttribute('sound', 'src: static/question/'+q1_sound);
+            var entity = document.getElementById("sound_q1");
+            entity.components.sound.playSound();
+            correct1 = q1_c1;
+            correct2 = q1_c2;
+            correct3 = q1_c3;
+            document.getElementById("table1").style.visibility ="hidden";
+
+        });
+
+        document.getElementById("button2").addEventListener("click", function () {
+            document.getElementById("sound_q2").setAttribute('sound', 'src: static/question/'+q2_sound);
+            var entity = document.getElementById("sound_q2");
+            entity.components.sound.playSound();
+            correct1 = q2_c1;
+            correct2 = q2_c2;
+            correct3 = q2_c3;
+            document.getElementById("table1").style.visibility ="hidden";
+
+        });
+
+        document.getElementById("button3").addEventListener("click", function () {
+          document.getElementById("sound_q3").setAttribute('sound', 'src: static/question/'+q3_sound);
+            var entity = document.getElementById("sound_q3");
+            entity.components.sound.playSound();
+            correct1 = q3_c1;
+            correct2 = q3_c2;
+            correct3 = q3_c3;
+            document.getElementById("table1").style.visibility ="hidden";
+
+        });
+
+        document.getElementById("button4").addEventListener("click", function () {
+          document.getElementById("sound_q4").setAttribute('sound', 'src: static/question/'+q4_sound);
+            var entity = document.getElementById("sound_q4");
+            entity.components.sound.playSound();
+            correct1 = q4_c1;
+            correct2 = q4_c2;
+            correct3 = q4_c3;
+            document.getElementById("table1").style.visibility ="hidden";
+
+        });
+
+        document.getElementById("button5").addEventListener("click", function () {
+          document.getElementById("sound_q5").setAttribute('sound', 'src: static/question/'+q5_sound);
+            var entity = document.getElementById("sound_q5");
+            entity.components.sound.playSound();
+            correct1 = q5_c1;
+            correct2 = q5_c2;
+            correct3 = q5_c3;
+            document.getElementById("table1").style.visibility ="hidden";
+
+        });
+    };
+    function checkanswer(a,b,c)
+    {
+      var status = 0;
+
+      for (let i = 0; i < po_x.length; i++) {
+        if (i == parseInt(correct1) || i == parseInt(correct2) || i == parseInt(correct3) )
+        {
+
+        }else
+        {
+          if (po_x[i]!=0)
+          {
+            //got error input
+            status =1;
+            document.getElementById("table1").style.visibility ="hidden";
+          }
+        }
+      }
+
+      if (status==0)
+      {
+        if (a !=0 && b !=0 && c!=0)
+        {
+          console.log(a);
+          console.log(b);
+          console.log(c);
+          if (a<b && b<c)
+          {
+            console.log("correct");
+            document.getElementById("table1").style.visibility ="visible";
+          }else{
+            document.getElementById("table1").style.visibility ="hidden";
+          }
+        }else{
+          document.getElementById("table1").style.visibility ="hidden";
+        }
+      }
+    }
+</script>
+<style>
+    .buttons {
+      position: absolute;
+      bottom: 50px;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+      visibility:visible;
+    }
+    .tables {
+    position: absolute;
+    bottom: 100px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    visibility:hidden;
+  }
+  </style>
+<body style="margin: 0px; overflow: hidden;">
+  <div class="tables" id="table1">
+    <table border="1" width="40%" style="background-color: aqua;">
+        <tr><td align="center">
+            <font size="+3">Yes, you are correct.</font>
+        </td></tr>
+    </table>
+</div>
+  <div class="buttons" id="mybuttons">
+        <button  id="button1">Question 1</button>&nbsp;
+        <button  id="button2">Question 2</button>&nbsp;
+        <button  id="button3">Question 3</button>&nbsp;
+        <button  id="button4">Question 4</button>&nbsp;
+        <button  id="button5">Question 5</button>&nbsp;
+  </div> 
+  <a-scene
+  vr-mode-ui="enabled: false;"
+  renderer="logarithmicDepthBuffer: true;"
+  embedded
+  arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;">
+
+    <a-assets>
+      <img id="s_a" src="static/pic_letter/s_a.png" />
+      <img id="s_b" src="static/pic_letter/s_b.png" />
+      <img id="s_c" src="static/pic_letter/s_c.png" />
+      <img id="s_d" src="static/pic_letter/s_d.png" />
+      <img id="s_e" src="static/pic_letter/s_e.png" />
+      <img id="s_f" src="static/pic_letter/s_f.png" />
+      <img id="s_g" src="static/pic_letter/s_g.png" />
+      <img id="s_h" src="static/pic_letter/s_h.png" />
+      <img id="s_i" src="static/pic_letter/s_i.png" />
+      <img id="s_j" src="static/pic_letter/s_j.png" />
+      <img id="s_k" src="static/pic_letter/s_k.png" />
+      <img id="s_l" src="static/pic_letter/s_l.png" />
+      <img id="s_m" src="static/pic_letter/s_m.png" />
+      <img id="s_n" src="static/pic_letter/s_n.png" />
+      <img id="s_o" src="static/pic_letter/s_o.png" />
+      <img id="s_p" src="static/pic_letter/s_p.png" />
+      <img id="s_q" src="static/pic_letter/s_q.png" />
+      <img id="s_r" src="static/pic_letter/s_r.png" />
+      <img id="s_s" src="static/pic_letter/s_s.png" />
+      <img id="s_t" src="static/pic_letter/s_t.png" />
+      <img id="s_u" src="static/pic_letter/s_u.png" />
+      <img id="s_v" src="static/pic_letter/s_v.png" />
+      <img id="s_w" src="static/pic_letter/s_w.png" />
+      <img id="s_x" src="static/pic_letter/s_x.png" />
+      <img id="s_y" src="static/pic_letter/s_y.png" />
+      <img id="s_z" src="static/pic_letter/s_z.png" />
+
+      <audio id="question1" src="static/question/c_a_t.mp3" preload="auto" crossorigin="anonymous" poolSize="26"></audio>
+      <audio id="question2" src="static/question/c_a_p.mp3" preload="auto" crossorigin="anonymous" poolSize="26"></audio>
+      <audio id="question3" src="static/question/b_a_g.mp3" preload="auto" crossorigin="anonymous" poolSize="26"></audio>
+      <audio id="question4" src="static/question/v_a_n.mp3" preload="auto" crossorigin="anonymous" poolSize="26"></audio>
+      <audio id="question5" src="static/question/h_a_m.mp3" preload="auto" crossorigin="anonymous" poolSize="26"></audio>
+    </a-assets>
+
+    <a-entity sound="src: #question1" id="sound_q1"></a-entity>
+    <a-entity sound="src: #question2" id="sound_q2"></a-entity>
+    <a-entity sound="src: #question3" id="sound_q3"></a-entity>
+    <a-entity sound="src: #question4" id="sound_q4"></a-entity>
+    <a-entity sound="src: #question5" id="sound_q5"></a-entity>
+
+    <a-marker id="marker1" markerhandler type="pattern" url="static/pattern/pattern-small_a.patt" smooth="true"
+    smoothCount="10"
+    smoothTolerance=".10"
+    smoothThreshold="5"
+    minConfidence = "0.99">
+      <a-image  id="desc" src="#s_a" rotation="90 0 0" position="0 0 -2.5"></a-image>
+   </a-marker>
+
+   <a-marker id="marker2" markerhandler type="pattern" url="static/pattern/pattern-small_b.patt" smooth="true"
+   smoothCount="10"
+   smoothTolerance=".10"
+   smoothThreshold="5"
+   minConfidence = "0.99">
+    <a-image  id="desc" src="#s_b" rotation="-90 0 0" position="0 0 -2.5"></a-image>
+   </a-marker>
+
+   <a-marker id="marker3" markerhandler type="pattern" url="static/pattern/pattern-small_c.patt" smooth="true"
+   smoothCount="10"
+   smoothTolerance=".10"
+   smoothThreshold="5"
+   minConfidence = "0.99">
+    <a-image  id="desc" src="#s_c" rotation="-90 0 0" position="0 0 -2.5"></a-image>
+   </a-marker>
+
+   <a-marker id="marker4" markerhandler type="pattern" url="static/pattern/pattern-small_d.patt" smooth="true"
+   smoothCount="10"
+   smoothTolerance=".10"
+   smoothThreshold="5"
+   minConfidence = "0.99">
+    <a-image  id="desc" src="#s_d" rotation="-90 0 0" position="0 0 -2.5"></a-image>
+   </a-marker>
+
+   <a-marker id="marker5" markerhandler type="pattern" url="static/pattern/pattern-small_e.patt" smooth="true"
+   smoothCount="10"
+   smoothTolerance=".10"
+   smoothThreshold="5"
+   minConfidence = "0.99">
+    <a-image  id="desc" src="#s_e" rotation="-90 0 0" position="0 0 -2.5"></a-image>
+   </a-marker>
+
+   <a-marker id="marker6" markerhandler type="pattern" url="static/pattern/pattern-small_f.patt" smooth="true"
+   smoothCount="10"
+   smoothTolerance=".10"
+   smoothThreshold="5"
+   minConfidence = "0.99">
+    <a-image  id="desc" src="#s_f" rotation="-90 0 0" position="0 0 -2.5"></a-image>
+   </a-marker>
+
+   <a-marker id="marker7" markerhandler type="pattern" url="static/pattern/pattern-small_g.patt" smooth="true"
+   smoothCount="10"
+   smoothTolerance=".10"
+   smoothThreshold="5"
+   minConfidence = ".99">
+    <a-image  id="desc" src="#s_g" rotation="-90 0 0" position="0 0 -2.5"></a-image>
+   </a-marker>
+
+   <a-marker id="marker8" markerhandler type="pattern" url="static/pattern/pattern-small_h.patt" smooth="true"
+   smoothCount="10"
+   smoothTolerance=".10"
+   smoothThreshold="5"
+   minConfidence = "0.99">
+    <a-image  id="desc" src="#s_h" rotation="-90 0 0" position="0 0 -2.5"></a-image>
+   </a-marker>
+
+   <a-marker id="marker9" markerhandler type="pattern" url="static/pattern/pattern-small_i.patt" smooth="true"
+   smoothCount="10"
+   smoothTolerance=".10"
+   smoothThreshold="5"
+   minConfidence = "0.99">
+    <a-image  id="desc" src="#s_i" rotation="-90 0 0" position="0 0 -2.5"></a-image>
+   </a-marker>
+
+   <a-marker id="marker10" markerhandler type="pattern" url="static/pattern/pattern-small_j.patt" smooth="true"
+   smoothCount="10"
+   smoothTolerance=".10"
+   smoothThreshold="5"
+   minConfidence = "0.99">
+    <a-image  id="desc" src="#s_j" rotation="-90 0 0" position="0 0 -2.5"></a-image>
+   </a-marker>
+
+   <a-marker id="marker11" markerhandler type="pattern" url="static/pattern/pattern-small_k.patt" smooth="true"
+   smoothCount="10"
+   smoothTolerance=".10"
+   smoothThreshold="5"
+   minConfidence = "0.99">
+    <a-image  id="desc" src="#s_k" rotation="-90 0 0" position="0 0 -2.5"></a-image>
+   </a-marker>
+
+   <a-marker id="marker12" markerhandler type="pattern" url="static/pattern/pattern-small_l.patt" smooth="true"
+   smoothCount="10"
+   smoothTolerance=".10"
+   smoothThreshold="5"
+   minConfidence = "0.99">
+    <a-image  id="desc" src="#s_l" rotation="-90 0 0" position="0 0 -2.5"></a-image>
+   </a-marker>
+
+   <a-marker id="marker13" markerhandler type="pattern" url="static/pattern/pattern-small_m.patt" smooth="true"
+   smoothCount="10"
+   smoothTolerance=".10"
+   smoothThreshold="5"
+   minConfidence = "0.99">
+    <a-image  id="desc" src="#s_m" rotation="-90 0 0" position="0 0 -2.5"></a-image>
+   </a-marker>
+
+   <a-marker id="marker14" markerhandler type="pattern" url="static/pattern/pattern-small_n.patt" smooth="true"
+   smoothCount="10"
+   smoothTolerance=".10"
+   smoothThreshold="5"
+   minConfidence = "0.99">
+    <a-image  id="desc" src="#s_n" rotation="-90 0 0" position="0 0 -2.5"></a-image>
+   </a-marker>
+
+   <a-marker id="marker15" markerhandler type="pattern" url="static/pattern/pattern-small_o.patt" smooth="true"
+   smoothCount="10"
+   smoothTolerance=".10"
+   smoothThreshold="5"
+   minConfidence = "0.99">
+    <a-image  id="desc" src="#s_o" rotation="-90 0 0" position="0 0 -2.5"></a-image>
+   </a-marker>
+
+   <a-marker id="marker16" markerhandler type="pattern" url="static/pattern/pattern-small_p.patt" smooth="true"
+   smoothCount="10"
+   smoothTolerance=".10"
+   smoothThreshold="5"
+   minConfidence = "0.99">
+    <a-image  id="desc" src="#s_p" rotation="-90 0 0" position="0 0 -2.5"></a-image>
+   </a-marker>
+
+   <a-marker id="marker17" markerhandler type="pattern" url="static/pattern/pattern-small_q.patt" smooth="true"
+   smoothCount="10"
+   smoothTolerance=".10"
+   smoothThreshold="5"
+   minConfidence = "0.99">
+    <a-image  id="desc" src="#s_q" rotation="-90 0 0" position="0 0 -2.5"></a-image>
+   </a-marker>
+
+   <a-marker id="marker18" markerhandler type="pattern" url="static/pattern/pattern-small_r.patt" smooth="true"
+   smoothCount="10"
+   smoothTolerance=".10"
+   smoothThreshold="5"
+   minConfidence = "0.99">
+    <a-image  id="desc" src="#s_r" rotation="-90 0 0" position="0 0 -2.5"></a-image>
+   </a-marker>
+
+   <a-marker id="marker19" markerhandler type="pattern" url="static/pattern/pattern-small_s.patt" smooth="true"
+   smoothCount="10"
+   smoothTolerance=".10"
+   smoothThreshold="5"
+   minConfidence = "0.99">
+    <a-image  id="desc" src="#s_s" rotation="-90 0 0" position="0 0 -2.5"></a-image>
+   </a-marker>
+
+   <a-marker id="marker20" markerhandler type="pattern" url="static/pattern/pattern-small_t.patt" smooth="true"
+   smoothCount="10"
+   smoothTolerance=".10"
+   smoothThreshold="5"
+   minConfidence = "0.99">
+    <a-image  id="desc" src="#s_t" rotation="-90 0 0" position="0 0 -2.5"></a-image>
+   </a-marker>
+
+   <a-marker id="marker21" markerhandler type="pattern" url="static/pattern/pattern-small_u.patt" smooth="true"
+   smoothCount="10"
+   smoothTolerance=".10"
+   smoothThreshold="5"
+   minConfidence = "0.99">
+    <a-image  id="desc" src="#s_u" rotation="-90 0 0" position="0 0 -2.5"></a-image>
+   </a-marker>
+
+   <a-marker id="marker22" markerhandler type="pattern" url="static/pattern/pattern-small_v.patt" smooth="true"
+   smoothCount="10"
+   smoothTolerance=".10"
+   smoothThreshold="5"
+   minConfidence = "0.99">
+    <a-image  id="desc" src="#s_v" rotation="-90 0 0" position="0 0 -2.5"></a-image>
+   </a-marker>
+
+   <a-marker id="marker23" markerhandler type="pattern" url="static/pattern/pattern-small_w.patt" smooth="true"
+   smoothCount="10"
+   smoothTolerance=".10"
+   smoothThreshold="5"
+   minConfidence = "0.99">
+    <a-image  id="desc" src="#s_w" rotation="-90 0 0" position="0 0 -2.5"></a-image>
+   </a-marker>
+
+   <a-marker id="marker24" markerhandler type="pattern" url="static/pattern/pattern-small_x.patt" smooth="true"
+   smoothCount="10"
+   smoothTolerance=".10"
+   smoothThreshold="5"
+   minConfidence = "0.99">
+    <a-image  id="desc" src="#s_x" rotation="-90 0 0" position="0 0 -2.5"></a-image>
+   </a-marker>
+
+   <a-marker id="marker25" markerhandler type="pattern" url="static/pattern/pattern-small_y.patt" smooth="true"
+   smoothCount="10"
+   smoothTolerance=".10"
+   smoothThreshold="5"
+   minConfidence = "0.99">
+    <a-image  id="desc" src="#s_y" rotation="-90 0 0" position="0 0 -2.5"></a-image>
+   </a-marker>
+
+   <a-marker id="marker26" markerhandler type="pattern" url="static/pattern/pattern-small_z.patt" smooth="true"
+   smoothCount="10"
+   smoothTolerance=".10"
+   smoothThreshold="5"
+   minConfidence = "0.99">
+    <a-image  id="desc" src="#s_z" rotation="-90 0 0" position="0 0 -2.5"></a-image>
+   </a-marker>
+  <a-entity camera></a-entity>
+    
+</a-scene>
+</body>
+</html>
